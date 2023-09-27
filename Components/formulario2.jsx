@@ -2,7 +2,7 @@ import react from "react";
 import { View, Text} from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { styles } from "../assets/Styles/styleprincipales";
-import { estilos } from "../assets/Styles/styles";
+import { color, estilos } from "../assets/Styles/styles";
 
 
 export function Formulario2() {
@@ -24,6 +24,7 @@ export function Formulario2() {
     const [nota2,setNota2] = react.useState(0)
     const [nota3,setNota3] = react.useState(0)
     const [resultado,setResultado] = react.useState(0)
+    const [color,setColor] = react.useState("")
     const [anotacion,setAnotacion] =react.useState("Obervación:")
     const [resultadosBusqueda, setResultadosBusqueda] = react.useState([])
 
@@ -59,19 +60,22 @@ export function Formulario2() {
         result = resultado.toFixed(2)
         if (resultado >= 3) {
             <Text style={{color:"green"}}>Materia Aprobada</Text>
-            let test=("aprobado")
+            let test=("Materia Aprobada")
             setAnotacion(test)
+            setColor('green')
             console.log("Materia Aprobada");
          }if (resultado >2 && resultado<3) {
-                <Text style={{color:"green"}}>Materia Habilitada</Text>
-                let test=("asd")
+                <Text style={{color:"orange"}}>Materia Habilitada</Text>
+                let test=("Materia Habilitada")
                 setAnotacion(test)
+                setColor('orange')
                 console.log("Materia habilitada");
             
          }if(resultado < 2){
-            <Text style={{color:"green"}}>Materia no aprobada</Text>
-            let test=("mp")
+            <Text style={{color:"red"}}>Materia no aprobada</Text>
+            let test=("Materia no aprobada")
             setAnotacion(test)
+            setColor('red')
             console.log("Materia no aprobada");
             
          }
@@ -219,15 +223,18 @@ export function Formulario2() {
 
 
         
-        <View style={{flexDirection:'row'}}>
+        {/* <View style={{flexDirection:'row'}}>
           <TextInput label=""
             style={estilos.tInputs2}
             value={anotacion}
             >
           </TextInput>
-        </View> 
+        </View>  */}
+
+        <Text style={{color:color}}>{anotacion}</Text>
     
         {/* <Tconsole.log(estudTcones);
+        
 
         {/* BUTTONS */}
         <View style={{flexDirection:'row'}}>
